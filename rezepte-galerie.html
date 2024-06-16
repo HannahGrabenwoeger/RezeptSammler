@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rezept-Galerie</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Rezept-Galerie</h1>
+</header>
+<main>
+  <section id="link-zur-Main">
+    <a href="rezept-hinzufuegen.html">Rezept hinzufügen</a>
+  </section>
+  <section id="galerie">
+  </section>
+</main>
+
+<div id="rezeptModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeRezeptModal()">&times;</span>
+    <h2 id="rezeptModalName"></h2>
+    <p id="rezeptModalBeschreibung"></p>
+    <p id="rezeptModalKochzeit"></p>
+    <ul id="rezeptModalZutaten"></ul>
+    <p id="rezeptModalZubereitung"></p>
+  </div>
+</div>
+
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">&times;</span>
+    <h2>Rezept bearbeiten</h2>
+    <form id="editForm">
+      <input type="hidden" id="editId">
+      <label for="editName">Name:</label>
+      <input type="text" id="editName" required>
+
+      <label for="editBeschreibung">Beschreibung:</label>
+      <input type="text" id="editBeschreibung" required>
+
+      <label>Zutaten und Mengen:</label>
+      <div id="editZutatenContainer">
+      </div>
+      <button type="button" onclick="addEditZutat()">+ Zutat hinzufügen</button>
+
+      <label for="editKochzeit">Kochzeit:</label>
+      <input type="text" id="editKochzeit" required>
+
+      <label for="editZubereitungContainer">Zubereitung:</label>
+      <div id="editZubereitungContainer">
+      </div>
+      <button type="button" onclick="addEditZubereitung()">+ Schritt hinzufügen</button>
+
+      <label for="editBild">Bild hochladen:</label>
+      <input type="file" id="editBild" accept="image/*">
+
+      <button type="submit">Rezept speichern</button>
+    </form>
+  </div>
+</div>
+
+<script src="rezept-galerie.js"></script>
+</body>
+</html>

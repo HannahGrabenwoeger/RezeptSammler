@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rezept-Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Rezept Hinzufügen</h1>
+</header>
+<main>
+  <section id="link-zur-galerie">
+    <a href="rezepte-galerie.html">Zur Rezept-Galerie</a>
+  </section>
+  <section id="rezept-form">
+    <h2>Neues Rezept hinzufügen</h2>
+    <form id="rezeptForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="kochzeit">Kochzeit:</label>
+      <input type="text" id="kochzeit" required>
+
+      <div id="zutatenContainer">
+        <label for="menge">Zutaten und Mengen:</label>
+        <div class="zutatMenge">
+          <input type="text" id="menge" placeholder="Menge" class="menge" required>
+          <label for="zutat"></label>
+          <input type="text" id="zutat" placeholder="Zutat" class="zutat" required>
+          <button type="button" onclick="addZutat(this)">+</button>
+        </div>
+      </div>
+
+      <label for="bild">Bild hochladen:</label>
+      <input type="file" id="bild" accept="image/*" required>
+
+      <label for="zubereitung1">Zubereitungsschritte:</label>
+      <div id="zubereitungContainer">
+        <div class="zubereitungSchritt">
+          <span>1.</span>
+          <input type="text" id="zubereitung1" class="zubereitung" required>
+          <button type="button" onclick="addZubereitungSchritt(this)">+</button>
+        </div>
+      </div>
+
+
+      <button type="submit">Rezept hinzufügen</button>
+    </form>
+  </section>
+</main>
+
+<script src="rezept-hinzufuegen.js"></script>
+</body>
+</html>
