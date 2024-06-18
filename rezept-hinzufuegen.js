@@ -54,11 +54,9 @@ function removeZubereitungSchritt(button) {
     div.querySelector('span').textContent = `${index + 1}.`;
   });
 
-  if (zubereitungSchritte.length > 0) {
-    const letzteZeile = zubereitungSchritte[zubereitungSchritte.length - 1];
-    const addButton = letzteZeile.querySelector('button[type="button"]');
-    addButton.style.display = 'inline-block';
-  }
+  const letzteZeile = zubereitungSchritte[zubereitungSchritte.length - 1];
+  const addButton = letzteZeile.querySelector('button[type="button"]');
+  addButton.style.display = 'inline-block';
 }
 
 function saveRezept() {
@@ -80,28 +78,18 @@ function saveRezept() {
 
   const zubereitungMitNummerierung = zubereitung.map((schritt, index) => `${index + 1}. ${schritt}`);
 
-  const bildInput = document.getElementById('bild');
-  if (bildInput.files && bildInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const neuesRezept = {
-        id: Date.now(),
-        name: name,
-        beschreibung: beschreibung,
-        kochzeit: kochzeit,
-        zutatenListe: zutatenListe,
-        zubereitung: zubereitungMitNummerierung, // Hier verwenden Sie die nummerierten Zubereitungsschritte
-        bild: e.target.result
-      };
+  const neuesRezept = {
+    id: Date.now(),
+    name: name,
+    beschreibung: beschreibung,
+    kochzeit: kochzeit,
+    zutatenListe: zutatenListe,
+    zubereitung: zubereitungMitNummerierung
+  };
 
-      let rezepte = JSON.parse(localStorage.getItem('rezepte')) || [];
-      rezepte.push(neuesRezept);
-      localStorage.setItem('rezepte', JSON.stringify(rezepte));
-      alert('Rezept erfolgreich hinzugefügt!');
-      document.getElementById('rezeptForm').reset();
-    };
-    reader.readAsDataURL(bildInput.files[0]);
-  } else {
-    alert('Bitte ein Bild hochladen.');
-  }
+  let rezepte = JSON.parse(localStorage.getItem('rezepte')) || [];
+  rezepte.push(neuesRezept);
+  localStorage.setItem('rezepte', JSON.stringify(rezepte));
+  alert('Rezept erfolgreich hinzugefügt!');
+  document.getElementById('rezeptForm').reset();
 }
