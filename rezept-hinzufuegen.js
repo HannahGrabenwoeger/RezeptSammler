@@ -79,7 +79,6 @@ function saveRezept() {
   const zubereitungMitNummerierung = zubereitung.map((schritt, index) => `${index + 1}. ${schritt}`);
 
   const neuesRezept = {
-    id: Date.now(),
     name: name,
     beschreibung: beschreibung,
     kochzeit: kochzeit,

@@ -8,12 +8,6 @@ function loadRezepteFromLocalStorage() {
 }
 
 function addRezeptToGalerie(rezept) {
-  const galerie = document.getElementById('galerie');
-  if (!galerie) {
-    console.error('Galerie-Element nicht gefunden');
-    return;
-  }
-
   const rezeptElement = document.createElement('div');
   rezeptElement.classList.add('rezept');
   rezeptElement.innerHTML = `
@@ -34,11 +28,11 @@ function openRezeptModal(id) {
     document.getElementById('rezeptModalBeschreibung').textContent = rezept.beschreibung;
     document.getElementById('rezeptModalKochzeit').textContent = `Kochzeit: ${rezept.kochzeit}`;
 
-    // Zubereitungsschritte direkt anzeigen
+
     const zubereitungHTML = rezept.zubereitung.join('<br>');
     document.getElementById('rezeptModalZubereitung').innerHTML = `Zubereitung:<br>${zubereitungHTML}`;
 
-    // Zutatenliste direkt anzeigen
+
     const zutatenListeHTML = rezept.zutatenListe.map(zutat => `${zutat.menge} ${zutat.zutat}`).join('<br>');
     document.getElementById('rezeptModalZutaten').innerHTML = `Zutaten:<br>${zutatenListeHTML}`;
 
